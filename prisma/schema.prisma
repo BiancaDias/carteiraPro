@@ -23,6 +23,8 @@ model Transaction {
   id Int @id @default(autoincrement())
   amount Int
   description String
+  date String
+  typebalance String
   userId Int
   bankId Int
   typeId Int
@@ -37,6 +39,8 @@ model Bank {
   name String
   userId Int
   transaction Transaction[]
+
+  @@map("bank")
 }
 
 model Type {
@@ -44,4 +48,6 @@ model Type {
   name String
   userId Int
   transaction Transaction[]
+
+  @@map("type")
 }

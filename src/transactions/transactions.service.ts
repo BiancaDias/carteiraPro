@@ -2,13 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { User } from '@prisma/client';
 import { TransactionsRepository } from './transactions.repository';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class TransactionsService {
   constructor(private readonly repository: TransactionsRepository) {}
   
   async create(createTransactionDto: CreateTransactionDto, user: User) {
-    return await this.repository.create(createTransactionDto, user);
+    const date = dayjs().format('DD/MM')
+    return await this.repository.create(createTransactionDto, user, date);
   }
 
   async findAll(user: User) {

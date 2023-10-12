@@ -7,11 +7,12 @@ import { PrismaService } from '../prisma/prisma.service';
 export class TransactionsRepository {
   constructor(private readonly prisma: PrismaService){}
 
-  async create(createTransactionDto: CreateTransactionDto, user: User) {
+  async create(createTransactionDto: CreateTransactionDto, user: User, date: string) {
     return await this.prisma.transaction.create({
       data: {
         ...createTransactionDto,
-        userId: user.id
+        userId: user.id,
+        date
       }
     })
   }

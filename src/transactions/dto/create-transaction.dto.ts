@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsIn, IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateTransactionDto {
 
@@ -17,4 +17,9 @@ export class CreateTransactionDto {
   @IsInt()
   @IsNotEmpty()
   typeId: number
+
+  @IsString()
+  @IsNotEmpty()
+  @IsIn(["entrada", "saida"])
+  typebalance: string
 }
