@@ -11,23 +11,22 @@ export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @Post()
-  create(@Body() createTransactionDto: CreateTransactionDto, @Users() user: User) {
-    console.log(user.id)
-    return this.transactionsService.create(createTransactionDto, user);
+  async create(@Body() createTransactionDto: CreateTransactionDto, @Users() user: User) {
+    return await this.transactionsService.create(createTransactionDto, user);
   }
 
   @Get()
-  findAll(@Users() user: User) {
-    return this.transactionsService.findAll(user);
+  async findAll(@Users() user: User) {
+    return await this.transactionsService.findAll(user);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTransactionDto: CreateTransactionDto) {
+  async update(@Param('id') id: string, @Body() updateTransactionDto: CreateTransactionDto) {
     return this.transactionsService.update(+id, updateTransactionDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     return this.transactionsService.remove(+id);
   }
 }

@@ -7,19 +7,19 @@ import { TransactionsRepository } from './transactions.repository';
 export class TransactionsService {
   constructor(private readonly repository: TransactionsRepository) {}
   
-  create(createTransactionDto: CreateTransactionDto, user: User) {
-    return 'This action adds a new transaction';
+  async create(createTransactionDto: CreateTransactionDto, user: User) {
+    return await this.repository.create(createTransactionDto, user);
   }
 
-  findAll(user: User) {
-    return `This action returns all transactions`;
+  async findAll(user: User) {
+    return await this.repository.findAll(user);
   }
 
-  update(id: number, updateTransactionDto: CreateTransactionDto) {
+  async update(id: number, updateTransactionDto: CreateTransactionDto) {
     return `This action updates a #${id} transaction`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} transaction`;
   }
 }
