@@ -35,11 +35,13 @@ model Transaction {
 model Bank {
   id Int @id @default(autoincrement())
   name String
+  userId Int
   transaction Transaction[]
 }
 
 model Type {
   id Int @id @default(autoincrement())
   name String
+  userId Int
   transaction Transaction[]
 }
