@@ -16,8 +16,8 @@ export class BanksController {
   }
 
   @Get()
-  findAll() {
-    return this.banksService.findAll();
+  findAll(@Users() user: User) {
+    return this.banksService.findAll(user);
   }
 
   @Get(':id')

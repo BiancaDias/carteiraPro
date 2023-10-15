@@ -12,8 +12,8 @@ export class BanksService {
     return await this.repository.create(createBankDto, user);
   }
 
-  findAll() {
-    return `This action returns all banks`;
+  async findAll(user: User) {
+    return await this.repository.findAll(user)
   }
 
   findOne(id: number) {

@@ -16,8 +16,10 @@ export class BanksRepository {
     })
   }
 
-  findAll() {
-    return `This action returns all types`;
+  async findAll(user: User) {
+    return await this.prisma.bank.findMany({
+      where: {userId: user.id}
+    });
   }
 
   findOne(id: number) {
