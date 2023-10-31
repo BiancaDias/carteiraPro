@@ -16,8 +16,8 @@ export class TypesController {
   }
 
   @Get()
-  findAll() {
-    return this.typesService.findAll();
+  findAll(@Users() user: User) {
+    return this.typesService.findAll(user);
   }
 
   @Get(':id')

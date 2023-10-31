@@ -12,8 +12,8 @@ export class TypesService {
     return await this.repository.create(createTypeDto, user)
   }
 
-  findAll() {
-    return `This action returns all types`;
+  async findAll(user: User) {
+    return await this.repository.findAll(user);
   }
 
   findOne(id: number) {
